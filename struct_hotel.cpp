@@ -1,109 +1,65 @@
-#include <iostream>
-
+//question 3 : hotel
+#include<iostream>
 using namespace std;
+class Hotel{
+  int rno;
+  string name;
+  float tariff;
+  int nod;
 
-class hotel{
-    private:
-     int Rno;//room number
-     string name;
-     double tariff;//per day charges
-     int NOD;//number of days
-     double calc;//calculation
-     double calc1;
-      
-    public: 
-    
-     void setRno(int room_number)
-     {
-        Rno = room_number;
-     }
+  int calc(int nod,float tariff){
+    if((nod*tariff)>10000)
+      return 1.05*nod*tariff;
+    else  
+      return nod*tariff;
+  }
 
-     void setName(string name1)
-     {
-        name = name1;
-     }
-     void setTariff( double perday_charges)
-     {
-        tariff = perday_charges;
-
-     }
-     void setNod(int no_of_days)
-     {
-        NOD = no_of_days;
-     }
-     void setCalc(int no_of_days,double perday_charges )
-     {
-       
-        if((no_of_days*perday_charges) < 10000)
-        {
-            calc = no_of_days*perday_charges ;
-            calc1= calc;
-        }
-        else{
-            calc = (no_of_days*perday_charges) * 1.05 ;
-            calc1 = calc;
-        }
-     }
-     
-      int getRno()
-      {
-        return Rno;
-      }
-      
-      string getName()
-      {
-        return name;
-      }
-      double getTariff()
-      {
-        return tariff;
-      }
-      int getNOD()
-      {
-        return NOD;
-      }
-      int getCalc()
-      {
-         return calc1;
-      }
+  public:
+  void checkin(int rno,string name,float tariff,int nod){
+    this->rno=rno;
+    this->name=name;
+    this->tariff=tariff;
+    this->nod=nod;
+  }
+  void checkout(){
+    int i=0;
+    cout<<"details of customer :"<<i+1<<endl;
+    cout<<"room no : "<<rno<<endl;
+    cout<<"name : "<<name<<endl;
+    cout<<"tariff : "<<tariff<<endl;
+    cout<<"nod : "<<nod<<endl;
+    cout<<"amount : "<<calc(nod,tariff)<<endl;
+    i++;
+  }
 };
-
-void checkin(int room_number,string name1,double perday_charges,int no_of_days,hotel &h1)
-{
-
-
-   cout << "enter the name of user"<<endl;
-   cin >> name1;
-   h1.setName(name1);
-   cout << "enter room no. :- "<<endl;
-   cin >> room_number ;
-   h1.setRno(room_number);
-   cout << "per day charges"<<endl;
-   cin >> perday_charges;
-   h1.setTariff(perday_charges);
-   cout << "No of days" << endl;
-   cin >> no_of_days;
-   h1.setNod(no_of_days);
-   h1.setCalc(no_of_days,perday_charges);
+int main(){
+  cout<<"Welcome to our hotel"<<endl;
+  int n;
+  cout<<"Enter number of customer : ";
+  cin>>n;
+  int rno,nod;
+  float tariff;
+  string name;
+  Hotel a[n];
+  for(int i=0;i<n;i++){
+    cout<<endl;
+    cout<<"Enter the details of customer :"<<i+1<<endl;
+    cout<<"Enter name of the customer : ";
+    cin>>name;
+    cout<<"Enter room no : ";
+    cin>>rno;
+    cout<<"Enter tariff : ";
+    cin>>tariff;
+    cout<<"Enter no of days of stay : ";
+    cin>>nod;
+  }
+  for(int i=0;i<n;i++){
+    a->checkin(rno,name,tariff,nod);
+  }
+  for(int i=0;i<n;i++){
+    cout<<endl;
+    a->checkout();
+  }
+  cout<<"Thank you";
+  return 0;
 }
-void checkout(int room_number,string name1,double perday_charges,int no_of_days,hotel &h1)
-{
-   
-  cout << "Room No :- " << h1.getRno() << endl ;
-  cout << "costumer name :- " << h1.getName() << endl ;
-  cout << "per day charges :- " << h1.getTariff() << endl ;
-  cout << "no. of Days :- " << h1.getNOD() << endl ;
-  cout << "total ammount  :- " << h1.getCalc() << endl ;
-}
-
-int main()
-{
-   hotel h1;
-   string name1;
-   int room_number;
-   double perday_charges;
-   int no_of_days;
-   
-   checkin(room_number,name1,perday_charges,no_of_days,h1);
-   checkout(room_number,name1,perday_charges,no_of_days,h1);
-   }
