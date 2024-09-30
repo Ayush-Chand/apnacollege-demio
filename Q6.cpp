@@ -26,7 +26,7 @@ class Hotel{
     cout<<"details of customer :"<<i+1<<endl;
     cout<<"room no : "<<rno<<endl;
     cout<<"name : "<<name<<endl;
-    cout<<"tariff : "<<tariff<<endl;
+    cout<<"Per Day Charges : "<<tariff<<endl;
     cout<<"nod : "<<nod<<endl;
     cout<<"amount : "<<calc(nod,tariff)<<endl;
     i++;
@@ -48,7 +48,7 @@ int main(){
     cin>>name;
     cout<<"Enter room no : ";
     cin>>rno;
-    cout<<"Enter tariff : ";
+    cout<<"Enter Per Day Charges : ";
     cin>>tariff;
     cout<<"Enter no of days of stay : ";
     cin>>nod;
